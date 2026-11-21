@@ -1,0 +1,89 @@
+% =============================================================================
+%  BÁO CÁO BÀI TẬP LỚN — CO4033 Big Data Analytics and Business Intelligence
+%  Biên dịch: XeLaTeX (+ BibTeX)  →  latexmk -xelatex main.tex
+%  Overleaf: Menu → Compiler = XeLaTeX
+% =============================================================================
+\documentclass[a4paper,12pt,oneside]{report}
+
+% ---------------------------------------------------------------- Font & ngôn ngữ
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\usepackage[vietnamese,english]{babel}
+\usepackage{indentfirst}
+
+% ---------------------------------------------------------------- Trang & bố cục
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{setspace}\onehalfspacing
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\bfseries\LARGE}{CHƯƠNG \thechapter.}{0.6em}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+
+% ---------------------------------------------------------------- Bảng, hình, code
+\usepackage{graphicx}\graphicspath{{figures/}}
+\usepackage{float}
+\usepackage{caption}\captionsetup{font=small,labelfont=bf}
+\usepackage{subcaption}
+\usepackage{booktabs,tabularx,longtable,multirow,array}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\usepackage{enumitem}\setlist{nosep,leftmargin=*}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tocbibind}
+
+\definecolor{harbor}{HTML}{0F1F36}
+\definecolor{teal}{HTML}{3CC8DA}
+\definecolor{codebg}{HTML}{F5F7FA}
+\lstset{basicstyle=\ttfamily\small, backgroundcolor=\color{codebg}, frame=single,
+        breaklines=true, columns=fullflexible, keywordstyle=\color{blue}\bfseries,
+        commentstyle=\color{gray}, stringstyle=\color{teal!60!black}, showstringspaces=false}
+\lstdefinelanguage{DAX}{morekeywords={VAR,RETURN,CALCULATE,FILTER,ALL,IF,SWITCH,TRUE,DIVIDE,
+        AVERAGE,SUM,MAX,COUNTROWS,SELECTEDVALUE,HASONEVALUE,REMOVEFILTERS,FORMAT,SUMX},
+        sensitive=true, morestring=[b]"}
+
+% Đánh dấu phần chưa viết — xoá trước khi nộp
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO]} #1}}
+
+% ---------------------------------------------------------------- Thông tin chung
+\newcommand{\coursename}{Big Data Analytics and Business Intelligence (CO4033)}
+\newcommand{\reporttitle}{Hệ thống BI \& Big Data Analytics giám sát hiệu suất vận tải chuỗi cung ứng toàn cầu và dự báo rủi ro trễ hạn giao hàng}
+\newcommand{\reporttitleen}{Global Supply Chain Logistics Performance \& Late Delivery Risk Predictive BI System}
+
+\begin{document}
+\selectlanguage{vietnamese}
+
+\input{chapters/00_cover}
+
+\pagenumbering{roman}
+\input{chapters/00_frontmatter}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\input{chapters/00_abbreviations}
+
+\clearpage
+\pagenumbering{arabic}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Trường ĐH Bách Khoa — ĐHQG-HCM}
+\fancyhead[R]{\small \coursename}
+\fancyfoot[C]{\thepage}
+
+\input{chapters/01_introduction}
+\input{chapters/02_background}
+\input{chapters/03_data_preprocessing}
+\input{chapters/04_architecture}
+\input{chapters/05_descriptive_diagnostic}
+\input{chapters/06_predictive}
+\input{chapters/07_prescriptive}
+\input{chapters/08_benchmark}
+\input{chapters/09_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\appendix
+\input{chapters/10_appendix}
+
+\end{document}

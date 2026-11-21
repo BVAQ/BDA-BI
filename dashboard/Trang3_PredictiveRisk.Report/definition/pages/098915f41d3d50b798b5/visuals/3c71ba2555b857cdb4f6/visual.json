@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "3c71ba2555b857cdb4f6",
+  "position": {
+    "x": 16,
+    "y": 4,
+    "z": 0,
+    "height": 66,
+    "width": 900,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "F5 · PRE-SHIPMENT ML RISK MODEL — EVALUATION & KEY DRIVERS",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "color": "#E9EEF4",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Predicts late delivery at order creation · 6 models vs. Bayes-optimal theoretical ceiling · no target leakage",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#8CA0B8"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

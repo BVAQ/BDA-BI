@@ -1,0 +1,27 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DataFolder", "_Measures", "dim_model", "dim_shipping_mode", "ml_model_comparison", "ml_roc_curve", "ml_confusion_matrix", "ml_feature_importance", "ml_calibration", "ml_threshold_metrics", "ml_leakage_demo", "ml_auc_by_mode", "ml_segment_accuracy", "ml_predictions", "ml_whatif_grid", "ml_sla_scenarios"]
+
+ref table _Measures
+ref table dim_model
+ref table dim_shipping_mode
+ref table ml_model_comparison
+ref table ml_roc_curve
+ref table ml_confusion_matrix
+ref table ml_feature_importance
+ref table ml_calibration
+ref table ml_threshold_metrics
+ref table ml_leakage_demo
+ref table ml_auc_by_mode
+ref table ml_segment_accuracy
+ref table ml_predictions
+ref table ml_whatif_grid
+ref table ml_sla_scenarios

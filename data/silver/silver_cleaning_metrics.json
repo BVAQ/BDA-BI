@@ -1,0 +1,10 @@
+{
+    "initial_columns": 53,
+    "clean_columns": 49,
+    "total_rows": 180519,
+    "loss_orders_count": 33784,
+    "late_orders_count": 98977,
+    "total_net_sales": 33054402.38,
+    "total_net_profit": 3966902.97,
+    "transformation_duration_seconds": 14.9
+}

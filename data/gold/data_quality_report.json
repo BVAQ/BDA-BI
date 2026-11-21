@@ -1,0 +1,236 @@
+{
+    "report_generated_at": "2026-11-06T15:43:25.351304",
+    "duration_seconds": 0.3,
+    "overall_status": "PASSED",
+    "summary": {
+        "total_checks": 43,
+        "passed": 41,
+        "failed": 0,
+        "warnings": 2,
+        "pass_rate_pct": 95.35
+    },
+    "dataset_info": {
+        "bronze_rows": 180519,
+        "bronze_cols": 53,
+        "silver_rows": 180519,
+        "silver_cols": 49
+    },
+    "checks": [
+        {
+            "check": "row_count.bronze_vs_expected",
+            "status": "PASS",
+            "detail": "Bronze = 180,519 dòng = kỳ vọng 180,519"
+        },
+        {
+            "check": "row_count.silver_vs_bronze",
+            "status": "PASS",
+            "detail": "Silver = 180,519 = Bronze 180,519 ✓ (không mất/nhân dòng)"
+        },
+        {
+            "check": "schema.required_columns",
+            "status": "PASS",
+            "detail": "Tất cả 18 cột bắt buộc đều có mặt ở Silver"
+        },
+        {
+            "check": "gold_tables.dim_date",
+            "status": "PASS",
+            "detail": "dim_date.parquet tồn tại (0.02 MB)"
+        },
+        {
+            "check": "gold_tables.dim_customer",
+            "status": "PASS",
+            "detail": "dim_customer.parquet tồn tại (0.35 MB)"
+        },
+        {
+            "check": "gold_tables.dim_product",
+            "status": "PASS",
+            "detail": "dim_product.parquet tồn tại (0.01 MB)"
+        },
+        {
+            "check": "gold_tables.dim_geography",
+            "status": "PASS",
+            "detail": "dim_geography.parquet tồn tại (0.09 MB)"
+        },
+        {
+            "check": "gold_tables.dim_shipping_ops",
+            "status": "PASS",
+            "detail": "dim_shipping_ops.parquet tồn tại (0.00 MB)"
+        },
+        {
+            "check": "gold_tables.fact_order_shipments",
+            "status": "PASS",
+            "detail": "fact_order_shipments.parquet tồn tại (5.92 MB)"
+        },
+        {
+            "check": "null_check.order_id",
+            "status": "PASS",
+            "detail": "0 null trong cột 'order_id'"
+        },
+        {
+            "check": "null_check.order_item_id",
+            "status": "PASS",
+            "detail": "0 null trong cột 'order_item_id'"
+        },
+        {
+            "check": "null_check.late_delivery_risk",
+            "status": "PASS",
+            "detail": "0 null trong cột 'late_delivery_risk'"
+        },
+        {
+            "check": "null_check.order_item_total",
+            "status": "PASS",
+            "detail": "0 null trong cột 'order_item_total'"
+        },
+        {
+            "check": "null_check.benefit_per_order",
+            "status": "PASS",
+            "detail": "0 null trong cột 'benefit_per_order'"
+        },
+        {
+            "check": "null_check.order_date_ts",
+            "status": "PASS",
+            "detail": "0 null trong cột 'order_date_ts'"
+        },
+        {
+            "check": "fk_integrity.order_date_key",
+            "status": "PASS",
+            "detail": "Không có null FK trong 'order_date_key'"
+        },
+        {
+            "check": "fk_integrity.ship_date_key",
+            "status": "PASS",
+            "detail": "Không có null FK trong 'ship_date_key'"
+        },
+        {
+            "check": "fk_integrity.customer_key",
+            "status": "PASS",
+            "detail": "Không có null FK trong 'customer_key'"
+        },
+        {
+            "check": "fk_integrity.product_key",
+            "status": "PASS",
+            "detail": "Không có null FK trong 'product_key'"
+        },
+        {
+            "check": "fk_integrity.destination_geo_key",
+            "status": "PASS",
+            "detail": "Không có null FK trong 'destination_geo_key'"
+        },
+        {
+            "check": "fk_integrity.shipping_ops_key",
+            "status": "PASS",
+            "detail": "Không có null FK trong 'shipping_ops_key'"
+        },
+        {
+            "check": "pk_unique.dim_date",
+            "status": "PASS",
+            "detail": "PK 'date_key' là duy nhất (1,133 giá trị / 1,133 dòng)"
+        },
+        {
+            "check": "pk_unique.dim_customer",
+            "status": "PASS",
+            "detail": "PK 'customer_key' là duy nhất (20,652 giá trị / 20,652 dòng)"
+        },
+        {
+            "check": "pk_unique.dim_product",
+            "status": "PASS",
+            "detail": "PK 'product_key' là duy nhất (118 giá trị / 118 dòng)"
+        },
+        {
+            "check": "pk_unique.dim_geography",
+            "status": "PASS",
+            "detail": "PK 'destination_geo_key' là duy nhất (3,772 giá trị / 3,772 dòng)"
+        },
+        {
+            "check": "pk_unique.dim_shipping_ops",
+            "status": "PASS",
+            "detail": "PK 'shipping_ops_key' là duy nhất (64 giá trị / 64 dòng)"
+        },
+        {
+            "check": "biz_rule.binary.late_delivery_risk",
+            "status": "PASS",
+            "detail": "'late_delivery_risk' chỉ chứa {0, 1}"
+        },
+        {
+            "check": "biz_rule.binary.is_loss_order",
+            "status": "PASS",
+            "detail": "'is_loss_order' chỉ chứa {0, 1}"
+        },
+        {
+            "check": "biz_rule.binary.is_canceled_or_fraud",
+            "status": "PASS",
+            "detail": "'is_canceled_or_fraud' chỉ chứa {0, 1}"
+        },
+        {
+            "check": "biz_rule.binary.is_weekend",
+            "status": "PASS",
+            "detail": "'is_weekend' chỉ chứa {0, 1}"
+        },
+        {
+            "check": "biz_rule.binary.is_peak_season",
+            "status": "PASS",
+            "detail": "'is_peak_season' chỉ chứa {0, 1}"
+        },
+        {
+            "check": "biz_rule.order_status_values",
+            "status": "PASS",
+            "detail": "Tất cả 9 trạng thái đơn hàng đều hợp lệ"
+        },
+        {
+            "check": "biz_rule.shipping_mode_values",
+            "status": "PASS",
+            "detail": "Tất cả 4 shipping mode đều hợp lệ"
+        },
+        {
+            "check": "biz_rule.quantity_positive",
+            "status": "PASS",
+            "detail": "Tất cả order_item_quantity > 0"
+        },
+        {
+            "check": "biz_rule.discount_rate_range",
+            "status": "PASS",
+            "detail": "'order_item_discount_rate' hoàn toàn nằm trong [0.0, 1.0]"
+        },
+        {
+            "check": "biz_rule.shipping_days_non_negative",
+            "status": "PASS",
+            "detail": "Tất cả days_for_shipping_real ≥ 0"
+        },
+        {
+            "check": "outlier.iqr.benefit_per_order",
+            "status": "WARN",
+            "detail": "7,964 ngoại lệ cực đoan (4.41%) | IQR fence: [-166.40, 238.20] | Thực tế: [-4274.98, 911.80]"
+        },
+        {
+            "check": "outlier.iqr.order_item_total",
+            "status": "WARN",
+            "detail": "467 ngoại lệ cực đoan (0.26%) | IQR fence: [-324.68, 676.46] | Thực tế: [7.49, 1939.99]"
+        },
+        {
+            "check": "outlier.iqr.order_item_quantity",
+            "status": "PASS",
+            "detail": "Không có outlier cực đoan (3×IQR)"
+        },
+        {
+            "check": "outlier.zscore.days_for_shipping_real",
+            "status": "PASS",
+            "detail": "Không có outlier |Z| > 3.5"
+        },
+        {
+            "check": "outlier.zscore.delay_days",
+            "status": "PASS",
+            "detail": "Không có outlier |Z| > 3.5"
+        },
+        {
+            "check": "temporal.shipping_after_order",
+            "status": "PASS",
+            "detail": "Tất cả shipping_date ≥ order_date ✓"
+        },
+        {
+            "check": "temporal.date_range",
+            "status": "PASS",
+            "detail": "order_date trong [2015-01-01, 2018-01-31] ⊆ [2015, 2018]"
+        }
+    ],
+    "failed_checks": []
+}

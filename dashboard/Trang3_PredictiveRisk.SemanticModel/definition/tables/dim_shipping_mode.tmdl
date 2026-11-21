@@ -1,0 +1,53 @@
+table dim_shipping_mode
+	lineageTag: 1028f3ee-5933-5da8-bc13-5084ae61fcaf
+
+	column shipping_mode
+		dataType: string
+		lineageTag: 02f2f71e-a6dd-5ad7-9ca9-756ef7d17b4d
+		summarizeBy: none
+		sourceColumn: shipping_mode
+		sortByColumn: mode_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column sla_days
+		dataType: int64
+		lineageTag: 3be5e1cf-0153-5b17-88c9-a24642d7f869
+		summarizeBy: none
+		sourceColumn: sla_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column mode_order
+		dataType: int64
+		isHidden
+		lineageTag: f0afc635-7410-53ca-a389-3ed2982bea4c
+		summarizeBy: none
+		sourceColumn: mode_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_tier
+		dataType: string
+		lineageTag: 11408645-485f-5d1f-ae79-163b445180b3
+		summarizeBy: none
+		sourceColumn: service_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_shipping_mode = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        type table [shipping_mode = text, sla_days = Int64.Type, mode_order = Int64.Type, service_tier = text],
+				        {
+				            {"Same Day", 0, 1, "Express"},
+				            {"First Class", 1, 2, "Premium"},
+				            {"Second Class", 2, 3, "Standard"},
+				            {"Standard Class", 4, 4, "Economy"}
+				        })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

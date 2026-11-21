@@ -1,0 +1,19 @@
+% ============================== CHƯƠNG 8 ==============================
+\chapter{Đánh giá hiệu năng}
+\label{chap:benchmark}
+
+\begin{table}[H]
+\centering
+\caption{Kết quả benchmark (\texttt{data/gold/benchmark\_performance\_report.json})}
+\label{tab:bench}
+\begin{tabularx}{\linewidth}{lXr}
+\toprule
+\textbf{Benchmark} & \textbf{Nội dung} & \textbf{Kết quả} \\ \midrule
+I/O    & Đọc CSV (1.727,7 ms) so với Parquet (56,0 ms) & 30,83$\times$ \\
+OLAP   & 3 truy vấn tổng hợp trên Parquet & 61,9 / 34,3 / 48,0 ms \\
+Lưu trữ & CSV 91,47 MB so với Gold Parquet 6,39 MB & nén 14,31$\times$ (93\%) \\
+ML     & Huấn luyện + 5-fold CV 6 mô hình & $\approx$165 s \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\todo{Bổ sung PySpark vs Pandas, BigQuery bytes scanned khi có/không partition; BigQuery ML vs Python ML.}

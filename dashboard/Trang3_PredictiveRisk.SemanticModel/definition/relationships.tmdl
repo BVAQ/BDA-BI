@@ -1,0 +1,39 @@
+relationship 069702f8-d7f3-5a99-b7af-c42994bcd467
+	fromColumn: ml_whatif_grid.shipping_mode
+	toColumn: dim_shipping_mode.shipping_mode
+
+relationship 2d0cd94b-f42c-561f-aaba-a31f64932b23
+	fromColumn: ml_sla_scenarios.shipping_mode
+	toColumn: dim_shipping_mode.shipping_mode
+
+relationship 5ece5dd5-94a8-5b92-8a35-084b7df622c4
+	fromColumn: ml_predictions.shipping_mode
+	toColumn: dim_shipping_mode.shipping_mode
+
+relationship 9b695231-5f70-58b7-83f3-c007b1575470
+	fromColumn: ml_segment_accuracy.shipping_mode
+	toColumn: dim_shipping_mode.shipping_mode
+
+relationship 1e656b77-3683-5f24-9763-dfcf7f80a60b
+	fromColumn: ml_roc_curve.model
+	toColumn: dim_model.model
+
+relationship 9f68bb63-7152-5d9a-977d-3dbcbe8a20e8
+	fromColumn: ml_confusion_matrix.model
+	toColumn: dim_model.model
+
+relationship c5668888-2fa7-5d78-86de-6bc4cf1a3fd8
+	fromColumn: ml_feature_importance.model
+	toColumn: dim_model.model
+
+relationship 0c1e290f-4af0-5d69-928a-da360d78e4c6
+	fromColumn: ml_calibration.model
+	toColumn: dim_model.model
+
+relationship 725b2354-86a2-54c8-8481-eed3eb46c209
+	fromColumn: ml_auc_by_mode.model
+	toColumn: dim_model.model
+
+relationship 593efe5e-c1e6-5c9c-9d60-609eeccd9b5f
+	fromColumn: ml_model_comparison.model
+	toColumn: dim_model.model

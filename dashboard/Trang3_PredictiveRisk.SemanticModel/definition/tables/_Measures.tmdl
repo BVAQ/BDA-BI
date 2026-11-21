@@ -1,0 +1,314 @@
+table _Measures
+	lineageTag: 3e97b064-a147-5adf-9167-4f65ebd25487
+
+	measure 'Best Model' = CALCULATE(SELECTEDVALUE(ml_model_comparison[model]), REMOVEFILTERS(dim_model), ml_model_comparison[is_best] = 1)
+		displayFolder: F5 Model
+		lineageTag: 8d9af71a-0f7e-5849-b6f5-755825713812
+
+	measure 'Selected Model' = IF(HASONEVALUE(dim_model[model]) && ISFILTERED(dim_model[model]), VALUES(dim_model[model]), [Best Model])
+		displayFolder: F5 Model
+		lineageTag: ffc8a173-d0e5-54b4-a0dc-c05dddf5ceb5
+
+	measure 'Model Accuracy' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[accuracy]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: 6ea9ee02-4e25-5412-9179-7c941a928710
+
+	measure 'Model Precision' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[precision]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: 92026dbe-f8fd-5054-b42d-79fa29410f27
+
+	measure 'Model Recall' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[recall]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: 3a016a27-30d1-5498-82bc-c5fa4cb00fb5
+
+	measure 'Model F1' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[f1]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 0d6f2c4c-cd57-5e1f-989c-4cec4e2decff
+
+	measure 'Model ROC-AUC' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[roc_auc]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: ac8f77d3-12c2-54e5-89c9-55af5b96bf98
+
+	measure 'Model PR-AUC' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[pr_auc]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 5e04a503-0956-517a-a5ee-96ea9f69540e
+
+	measure 'Model Brier' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[brier]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 56bd0887-e851-52a0-8a14-4fce75faf09f
+
+	measure 'Model CV ROC-AUC' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[cv_roc_auc_mean]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 879c67cb-1521-5676-ad21-17fe3e4cedee
+
+	measure 'Model % of Ceiling' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_model_comparison[pct_of_ceiling_cv_auc]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = m)
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: d2a74893-5578-56ed-85a7-4406f21414e5
+
+	measure 'Ceiling ROC-AUC' = CALCULATE(MAX(ml_model_comparison[roc_auc]), REMOVEFILTERS(dim_model), ml_model_comparison[model] = "Theoretical_Ceiling")
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 296168ad-6ee2-5cd2-80ef-d4d221b97854
+
+	measure 'Baseline ROC-AUC' = CALCULATE(MAX(ml_model_comparison[roc_auc]), REMOVEFILTERS(dim_model), ml_model_comparison[model_type] = "baseline")
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 02b946dd-640f-5fc9-a42f-a412288b986b
+
+	measure 'AUC Lift vs Baseline' = [Model ROC-AUC] - [Baseline ROC-AUC]
+		formatString: +0.000;-0.000
+		displayFolder: F5 Model
+		lineageTag: 33c0ff77-33a4-52f1-918c-3f8899384c0c
+
+	measure 'ROC-AUC (by model)' = MAX(ml_model_comparison[roc_auc])
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 224ea679-11d7-5224-9d9b-be1e8ef1e59f
+
+	measure 'CV ROC-AUC (by model)' = MAX(ml_model_comparison[cv_roc_auc_mean])
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: 28123b68-8ed6-5329-ac21-eae42757a1f3
+
+	measure 'Accuracy (by model)' = MAX(ml_model_comparison[accuracy])
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: 93b67545-94a5-5855-80b9-a64092197c59
+
+	measure 'Leakage ROC-AUC' = CALCULATE(MAX(ml_leakage_demo[roc_auc]), ml_leakage_demo[model] = "RandomForest")
+		formatString: 0.000
+		displayFolder: F5 Model
+		lineageTag: a676358c-ee85-5a48-a760-3005da24924b
+
+	measure 'Leakage Accuracy' = CALCULATE(MAX(ml_leakage_demo[accuracy]), ml_leakage_demo[model] = "RandomForest")
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: c1b12333-44ec-59a2-94fa-8c5b7f471945
+
+	measure 'Leakage Warning' = "Using days_shipping_real (known only AFTER delivery): AUC = " & FORMAT([Leakage ROC-AUC], "0.000") & " — perfect but useless"
+		displayFolder: F5 Model
+		lineageTag: 129118f8-93b4-54a0-b7a9-b7ed88c16999
+
+	measure 'CM Count' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(SUM(ml_confusion_matrix[count]), REMOVEFILTERS(dim_model), ml_confusion_matrix[model] = m)
+		formatString: #,0
+		displayFolder: F5 Model
+		lineageTag: ff158499-9477-54a7-a48a-f335438a9792
+
+	measure 'CM % of Actual' = DIVIDE([CM Count], CALCULATE([CM Count], REMOVEFILTERS(ml_confusion_matrix[predicted])))
+		formatString: 0.0%
+		displayFolder: F5 Model
+		lineageTag: dfb09189-9bfa-58e9-a08c-1bdd249af024
+
+	measure 'Feature Importance' =
+			VAR m = [Selected Model]
+			RETURN CALCULATE(MAX(ml_feature_importance[importance_auc_drop]), REMOVEFILTERS(dim_model), ml_feature_importance[model] = m)
+		formatString: 0.0000
+		displayFolder: F5 Model
+		lineageTag: 9e9137ae-4487-535b-a252-ed45af8e31a8
+
+	measure 'Model Subtitle' = "Viewing: " & [Selected Model] & "  ·  Out-of-time test ≥ 2017-07-01  ·  5-fold GroupKFold CV"
+		displayFolder: F5 Model
+		lineageTag: 908ccefa-dde5-56c4-9f20-2cd286e0a4e7
+
+	measure 'Selected Threshold' = IF(HASONEVALUE(ml_threshold_metrics[threshold]), VALUES(ml_threshold_metrics[threshold]), 0.5)
+		formatString: 0.00
+		displayFolder: F5 Threshold
+		lineageTag: 4b5430d6-f034-57fa-bb86-16a52b31e994
+
+	measure 'Thr Precision' =
+			VAR t = [Selected Threshold]
+			RETURN CALCULATE(MAX(ml_threshold_metrics[precision]), FILTER(ALL(ml_threshold_metrics[threshold]), ABS(ml_threshold_metrics[threshold] - t) < 0.001))
+		formatString: 0.0%
+		displayFolder: F5 Threshold
+		lineageTag: 972d96bd-c3f2-5de3-bab2-6bf2025d5bb0
+
+	measure 'Thr Recall' =
+			VAR t = [Selected Threshold]
+			RETURN CALCULATE(MAX(ml_threshold_metrics[recall]), FILTER(ALL(ml_threshold_metrics[threshold]), ABS(ml_threshold_metrics[threshold] - t) < 0.001))
+		formatString: 0.0%
+		displayFolder: F5 Threshold
+		lineageTag: ec57b66f-eb87-570b-acbd-acfd46bb89a3
+
+	measure 'Thr Flagged %' =
+			VAR t = [Selected Threshold]
+			RETURN CALCULATE(MAX(ml_threshold_metrics[flagged_pct]), FILTER(ALL(ml_threshold_metrics[threshold]), ABS(ml_threshold_metrics[threshold] - t) < 0.001))
+		formatString: 0.0%
+		displayFolder: F5 Threshold
+		lineageTag: bb98c52f-9c80-56d2-9083-507875808a93
+
+	measure 'Thr Late Caught' =
+			VAR t = [Selected Threshold]
+			RETURN CALCULATE(MAX(ml_threshold_metrics[late_caught]), FILTER(ALL(ml_threshold_metrics[threshold]), ABS(ml_threshold_metrics[threshold] - t) < 0.001))
+		formatString: #,0
+		displayFolder: F5 Threshold
+		lineageTag: 72caa87c-a86f-574a-ba6e-67f4a348ea1d
+
+	measure 'Thr False Alarms' =
+			VAR t = [Selected Threshold]
+			RETURN CALCULATE(MAX(ml_threshold_metrics[false_alarms]), FILTER(ALL(ml_threshold_metrics[threshold]), ABS(ml_threshold_metrics[threshold] - t) < 0.001))
+		formatString: #,0
+		displayFolder: F5 Threshold
+		lineageTag: b7c192c5-934b-546b-bc95-01915cd8725e
+
+	measure Shipments = COUNTROWS(ml_predictions)
+		formatString: #,0
+		displayFolder: F5 Scoring
+		lineageTag: 5560e40d-fb18-5067-94a3-ad87137a2791
+
+	measure 'Scored Shipments' = CALCULATE(COUNTROWS(ml_predictions), ml_predictions[eval_eligible] = 1)
+		formatString: #,0
+		displayFolder: F5 Scoring
+		lineageTag: 5879b5d6-232e-5e11-8fa2-98241e592b25
+
+	measure 'Actual Late Rate' = CALCULATE(AVERAGE(ml_predictions[actual_late]), ml_predictions[eval_eligible] = 1)
+		formatString: 0.0%
+		displayFolder: F5 Scoring
+		lineageTag: e5948e68-00fd-5261-bc6e-7e131c78b090
+
+	measure 'Predicted Late Rate' = CALCULATE(AVERAGE(ml_predictions[pred_prob_late]), ml_predictions[eval_eligible] = 1)
+		formatString: 0.0%
+		displayFolder: F5 Scoring
+		lineageTag: 8afe9c29-2c24-5694-b94a-4215c43c1ed8
+
+	measure 'Prediction Accuracy' = CALCULATE(AVERAGE(ml_predictions[is_correct]), ml_predictions[eval_eligible] = 1)
+		formatString: 0.0%
+		displayFolder: F5 Scoring
+		lineageTag: 674ed4d1-ab68-5b28-a291-2f9b8c736ffb
+
+	measure 'High-Risk Shipments' = CALCULATE(COUNTROWS(ml_predictions), ml_predictions[risk_band] IN {"3-High", "4-Critical"})
+		formatString: #,0
+		displayFolder: F5 Scoring
+		lineageTag: efd88f3a-44dc-55de-87e7-028ee7329840
+
+	measure 'High-Risk Share' = DIVIDE([High-Risk Shipments], [Shipments])
+		formatString: 0.0%
+		displayFolder: F5 Scoring
+		lineageTag: e40d6df0-181a-5137-b3ae-d5a55e1497ab
+
+	measure 'Critical Orders' = CALCULATE(DISTINCTCOUNT(ml_predictions[order_id]), ml_predictions[risk_band] = "4-Critical")
+		formatString: #,0
+		displayFolder: F5 Scoring
+		lineageTag: b6cdae30-214e-56b6-ae91-375fd7b5d200
+
+	measure 'What-If P(Late)' = AVERAGE(ml_whatif_grid[pred_prob_late])
+		formatString: 0.0%
+		displayFolder: F6 What-If
+		lineageTag: 60748399-963a-5454-a8ad-a832956c409f
+
+	measure 'What-If Is Complete' = HASONEVALUE(ml_whatif_grid[shipping_mode]) && HASONEVALUE(ml_whatif_grid[order_hour]) && HASONEVALUE(ml_whatif_grid[market]) && HASONEVALUE(ml_whatif_grid[discount_rate]) && HASONEVALUE(ml_whatif_grid[order_item_quantity])
+		displayFolder: F6 What-If
+		lineageTag: afddb2d3-0337-537a-94ec-6b09b9d00cf6
+
+	measure 'What-If Risk Band' =
+			IF(NOT [What-If Is Complete], "—",
+			    VAR p = [What-If P(Late)]
+			    RETURN SWITCH(TRUE(), p >= 0.85, "4-Critical", p >= 0.6, "3-High", p >= 0.3, "2-Medium", "1-Low"))
+		displayFolder: F6 What-If
+		lineageTag: 516af273-5b1b-52a4-8861-5f91b0803a8f
+
+	measure 'What-If Current SLA' = IF(HASONEVALUE(ml_whatif_grid[shipping_mode]), "Promised SLA: " & SELECTEDVALUE(ml_whatif_grid[current_sla_days]) & " day(s)", "Select a mode")
+		displayFolder: F6 What-If
+		lineageTag: 99ee9118-7bcb-55f3-ba9c-fcfb6629d196
+
+	measure 'What-If Recommendation' =
+			IF([What-If Is Complete],
+			    VAR cur = SELECTEDVALUE(ml_whatif_grid[shipping_mode])
+			    VAR rec = SELECTEDVALUE(ml_whatif_grid[recommended_mode])
+			    VAR rp = SELECTEDVALUE(ml_whatif_grid[recommended_mode_prob])
+			    RETURN IF(rec = cur, "✔ " & cur & " is already the lowest-risk option", "➜ Switch to " & rec & " — P(late) drops to " & FORMAT(rp, "0%")),
+			    "Pick one value for every input to get a recommendation")
+		displayFolder: F6 What-If
+		lineageTag: f3d8f6b8-c5ba-5868-878c-5609ef131596
+
+	measure 'What-If Risk Reduction' = IF([What-If Is Complete], [What-If P(Late)] - SELECTEDVALUE(ml_whatif_grid[recommended_mode_prob]))
+		formatString: 0.0%
+		displayFolder: F6 What-If
+		lineageTag: b810d36b-baec-5a6b-87c4-c6be9ae84457
+
+	measure 'SLA Current Late Rate' = DIVIDE(SUMX(ml_sla_scenarios, ml_sla_scenarios[current_late_rate] * ml_sla_scenarios[shipments]), SUM(ml_sla_scenarios[shipments]))
+		formatString: 0.0%
+		displayFolder: F6 SLA
+		lineageTag: 3660caf9-af94-5b9c-b149-539a21bfdd44
+
+	measure 'SLA Expected Late Rate' = DIVIDE(SUMX(ml_sla_scenarios, ml_sla_scenarios[expected_late_rate] * ml_sla_scenarios[shipments]), SUM(ml_sla_scenarios[shipments]))
+		formatString: 0.0%
+		displayFolder: F6 SLA
+		lineageTag: f66a3fe7-d288-56d9-a28b-4cf0d2c3cd3c
+
+	measure 'SLA Expected OTD' = IF(HASONEVALUE(ml_sla_scenarios[proposed_sla_days]), 1 - [SLA Expected Late Rate])
+		formatString: 0.0%
+		displayFolder: F6 SLA
+		lineageTag: e932dbb4-a1b8-587a-bbeb-208c1ec05975
+
+	measure 'SLA Shipments Avoided' = IF(HASONEVALUE(ml_sla_scenarios[proposed_sla_days]), SUM(ml_sla_scenarios[late_shipments_avoided]))
+		formatString: #,0
+		displayFolder: F6 SLA
+		lineageTag: d82b819e-0566-5f29-b812-5692fda77568
+
+	measure 'What-If Risk Reduction Label' = IF([What-If Is Complete], FORMAT([What-If Risk Reduction], "0.0%"), "—")
+		displayFolder: F6 What-If
+		lineageTag: 1f8a5c93-99f1-5029-9b2b-e962e2bc7c68
+
+	measure 'SLA Late Rate Label' = IF(HASONEVALUE(ml_sla_scenarios[proposed_sla_days]), FORMAT([SLA Expected Late Rate], "0.0%"), "—")
+		displayFolder: F6 SLA
+		lineageTag: 2478aedf-1c0e-5e49-ae23-ff7c9f31fe06
+
+	measure 'SLA OTD Label' = IF(HASONEVALUE(ml_sla_scenarios[proposed_sla_days]), FORMAT([SLA Expected OTD], "0.0%"), "—")
+		displayFolder: F6 SLA
+		lineageTag: f4625664-2b2b-5595-81db-a5f5a2f67187
+
+	measure 'SLA Avoided Label' = IF(HASONEVALUE(ml_sla_scenarios[proposed_sla_days]), FORMAT([SLA Shipments Avoided], "#,0"), "—")
+		displayFolder: F6 SLA
+		lineageTag: d4f732df-dfae-5e45-bdfa-952cb17174b6
+
+	measure 'SLA Caption' = IF(HASONEVALUE(ml_sla_scenarios[proposed_sla_days]), "Proposed SLA = " & VALUES(ml_sla_scenarios[proposed_sla_days]) & " day(s)", "Select a proposed SLA")
+		displayFolder: F6 SLA
+		lineageTag: c3d74e00-a0cd-5e7f-9035-5fd40fbccae1
+
+	column Dummy
+		dataType: string
+		isHidden
+		lineageTag: 825c4bd7-24a1-5b76-a9fd-38183bb0c915
+		summarizeBy: none
+		sourceColumn: Dummy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Dummy = text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

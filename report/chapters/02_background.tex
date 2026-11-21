@@ -1,0 +1,39 @@
+% ============================== CHƯƠNG 2 ==============================
+\chapter{Cơ sở lý thuyết}
+\label{chap:background}
+
+\section{Big Data và mô hình 5V}
+\todo{Định nghĩa Big Data, 5V, so sánh với dữ liệu truyền thống~\cite{gandomi2015beyond}.}
+
+\section{Kiến trúc Lakehouse và Medallion}
+\todo{Data Lake vs Data Warehouse vs Lakehouse; tầng Bronze/Silver/Gold~\cite{armbrust2021lakehouse}.}
+
+\section{Mô hình hoá kho dữ liệu: Kimball và Inmon}
+\todo{Star schema, snowflake, fact/dimension, surrogate key; Role-playing, Junk và Degenerate dimension~\cite{kimball2013data}.}
+
+\section{OLAP và các phép toán đa chiều}
+\todo{Roll-up, drill-down, slice, dice, pivot; MOLAP/ROLAP; columnar storage.}
+
+\section{Xử lý phân tán với Apache Spark}
+\todo{RDD/DataFrame, lazy evaluation, DAG, Catalyst, broadcast join, AQE~\cite{zaharia2016spark}.}
+
+\section{Ba cấp độ phân tích: Descriptive, Predictive, Prescriptive}
+\todo{Định nghĩa và vị trí của từng trang dashboard trong chuỗi phân tích.}
+
+\section{Học máy cho bài toán phân loại}
+\subsection{Các thuật toán}
+Logistic Regression, Decision Tree~\cite{breiman1984cart}, Random Forest~\cite{breiman2001random},
+Gradient Boosting: XGBoost~\cite{chen2016xgboost} và LightGBM~\cite{ke2017lightgbm}.
+\todo{Mô tả ngắn từng thuật toán.}
+
+\subsection{Đánh giá mô hình}
+Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC, Brier score; cross-validation theo nhóm;
+out-of-time validation; permutation importance~\cite{breiman2001random}.
+
+\subsection{Target leakage}
+Rò rỉ nhãn xảy ra khi mô hình dùng thông tin chỉ có \emph{sau} thời điểm dự báo, dẫn tới
+độ chính xác ảo khi huấn luyện nhưng vô dụng khi triển khai~\cite{kaufman2012leakage}.
+
+\subsection{Sai số Bayes và trần lý thuyết}
+Với phân phối $P(y\mid x)$, bộ phân loại Bayes $h^*(x)=\mathbb{1}[P(y=1\mid x)\ge 0.5]$ đạt sai số
+nhỏ nhất có thể; không mô hình nào trên cùng tập đặc trưng có thể vượt qua một cách hệ thống~\cite{hastie2009elements}.

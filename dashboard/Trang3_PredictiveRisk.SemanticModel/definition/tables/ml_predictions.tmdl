@@ -1,0 +1,231 @@
+table ml_predictions
+	lineageTag: d2faaa6b-bf09-57ff-8901-e483adc7bc75
+
+	column order_item_id
+		dataType: int64
+		lineageTag: d7071194-31b6-55c0-8574-980f6f571d8f
+		summarizeBy: none
+		sourceColumn: order_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: int64
+		lineageTag: 70ae3056-1499-516b-9029-e77c48dec53c
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8ad793ae-e0f4-5293-9608-ced6aedba357
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_hour
+		dataType: int64
+		lineageTag: de11a9a0-d34d-5b11-bad5-6cee61b64781
+		summarizeBy: none
+		sourceColumn: order_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_dayofweek
+		dataType: int64
+		lineageTag: 5b588056-22ad-5bae-ba0e-16d2ec1266d0
+		summarizeBy: none
+		sourceColumn: order_dayofweek
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_month
+		dataType: int64
+		lineageTag: 1e08847f-89c7-5d38-8c54-6efa7edfdf0e
+		summarizeBy: none
+		sourceColumn: order_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_mode
+		dataType: string
+		lineageTag: fa3ad3ec-091c-5aed-a638-243a9427684b
+		summarizeBy: none
+		sourceColumn: shipping_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: 8c0d2101-a475-563b-ad6c-77dd8e5ca461
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 6ae4a7fa-93a3-5be0-b3fa-dd9351809647
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_region
+		dataType: string
+		lineageTag: dd74cf00-dc9b-5855-9edc-ebd4c6b97db2
+		summarizeBy: none
+		sourceColumn: order_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_country
+		dataType: string
+		lineageTag: 1f2960be-beb7-5617-8e75-cb814d06fd19
+		summarizeBy: none
+		sourceColumn: order_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_segment
+		dataType: string
+		lineageTag: 365fdaf1-9752-50f8-85a0-64ffe9905f4b
+		summarizeBy: none
+		sourceColumn: customer_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_name
+		dataType: string
+		lineageTag: 248f12be-d31d-58be-b58c-d31924924648
+		summarizeBy: none
+		sourceColumn: department_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: f224274a-b491-57c5-9bf1-a5b407d0330d
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item_quantity
+		dataType: int64
+		lineageTag: ddc8c21f-fb6b-5b24-bc8d-8c74e527a26a
+		summarizeBy: none
+		sourceColumn: order_item_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 2375aaf5-0a7a-5492-bc12-e853ae3fadbf
+		summarizeBy: none
+		sourceColumn: discount_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_sales
+		dataType: double
+		lineageTag: e295a053-bfba-5ac9-8da9-6819ed6e688a
+		summarizeBy: none
+		sourceColumn: net_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column split
+		dataType: string
+		lineageTag: 15f144a3-6f15-5f47-8b66-bf9f2c903acd
+		summarizeBy: none
+		sourceColumn: split
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_canceled_shipment
+		dataType: int64
+		lineageTag: 6bfe1996-a783-5963-8677-ad67e670940d
+		summarizeBy: none
+		sourceColumn: is_canceled_shipment
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_late
+		dataType: int64
+		lineageTag: 4219b8fe-36a6-5132-9856-d57065f9bb4c
+		summarizeBy: none
+		sourceColumn: actual_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column pred_prob_late
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 3e90e144-cd35-506a-87ba-1688dc139148
+		summarizeBy: none
+		sourceColumn: pred_prob_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column pred_label
+		dataType: int64
+		lineageTag: ca7b30da-ec71-5bdd-8254-6eda9a12e6ac
+		summarizeBy: none
+		sourceColumn: pred_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_band
+		dataType: string
+		lineageTag: f8fe24f7-5885-500e-9ba4-befb14b4e1c0
+		summarizeBy: none
+		sourceColumn: risk_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_correct
+		dataType: int64
+		lineageTag: f7c896a0-3458-5f9c-aba4-472a9c1b81f3
+		summarizeBy: none
+		sourceColumn: is_correct
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_sla_days
+		dataType: int64
+		lineageTag: 481f2f71-ef91-5257-938c-171ad300537a
+		summarizeBy: none
+		sourceColumn: current_sla_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column model_name
+		dataType: string
+		lineageTag: 8c4c94e1-b006-56e0-9094-d773b77324fb
+		summarizeBy: none
+		sourceColumn: model_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column eval_eligible
+		dataType: int64
+		lineageTag: 3768f6ad-c59d-5395-899b-e565c90598de
+		summarizeBy: none
+		sourceColumn: eval_eligible
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_predictions = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_predictions.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

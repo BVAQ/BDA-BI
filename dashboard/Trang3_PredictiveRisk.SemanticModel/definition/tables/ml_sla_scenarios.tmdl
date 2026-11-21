@@ -1,0 +1,87 @@
+table ml_sla_scenarios
+	lineageTag: 99bada4f-57b0-54fc-9add-9551e2a66b26
+
+	column shipping_mode
+		dataType: string
+		lineageTag: 89f0c3ac-6971-5fd2-a1b4-0bb6cf4b2376
+		summarizeBy: none
+		sourceColumn: shipping_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_sla_days
+		dataType: int64
+		lineageTag: 7c9512f6-3a99-5561-a3ce-d309235a56b6
+		summarizeBy: none
+		sourceColumn: current_sla_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column proposed_sla_days
+		dataType: int64
+		lineageTag: 003cb93f-395f-551a-ac25-b08f93a7d730
+		summarizeBy: none
+		sourceColumn: proposed_sla_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: int64
+		lineageTag: 25fbea73-6039-59d3-9ff6-dbd9a333595b
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipments
+		dataType: int64
+		lineageTag: 2841aaab-1b89-5f22-9ca2-bf7b0cdb3c48
+		summarizeBy: none
+		sourceColumn: shipments
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: b7ba73b9-095a-50ef-81c7-65dbcab458c2
+		summarizeBy: none
+		sourceColumn: expected_late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_otd_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 267ec9bf-535a-51c2-989f-56a23ab0586e
+		summarizeBy: none
+		sourceColumn: expected_otd_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 7abca783-fc6d-5fcd-b735-b44fa9c2e6c6
+		summarizeBy: none
+		sourceColumn: current_late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column late_shipments_avoided
+		dataType: int64
+		lineageTag: 124a880e-391a-5ed0-a9a4-4413f2c731ec
+		summarizeBy: none
+		sourceColumn: late_shipments_avoided
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_sla_scenarios = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_sla_scenarios.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

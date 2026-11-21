@@ -1,0 +1,40 @@
+% ============================== CHƯƠNG 1 ==============================
+\chapter{Giới thiệu}
+\label{chap:intro}
+
+\section{Bối cảnh doanh nghiệp}
+DataCo Global là tập đoàn thương mại và phân phối đa quốc gia, điều phối hàng hoá thuộc
+11 ngành hàng và 51 danh mục tới 164 quốc gia thuộc 5 thị trường châu lục, qua 4 phương thức
+vận chuyển: \textit{Standard Class} (SLA 4 ngày), \textit{Second Class} (2 ngày),
+\textit{First Class} (1 ngày) và \textit{Same Day} (trong ngày).
+\todo{Mở rộng bối cảnh, vai trò của BI trong logistics.}
+
+\section{Bài toán và nỗi đau doanh nghiệp}
+\begin{itemize}
+  \item \textbf{Khủng hoảng trễ hạn:} 98.977/180.519 vận đơn (54,83\%) giao trễ; First Class trễ 95,32\%, Second Class 76,63\% (``nghịch lý SLA'').
+  \item \textbf{Xói mòn lợi nhuận:} 33.784 dòng đơn (18,71\%) lỗ, tổng thất thoát $-$3,88 triệu USD; 4.062 vận đơn nghi gian lận.
+  \item \textbf{Quản trị bị động:} chỉ biết đơn trễ sau khi sự cố xảy ra, thiếu cảnh báo sớm.
+\end{itemize}
+
+\section{Mục tiêu và phạm vi}
+\todo{Liệt kê mục tiêu hệ thống và 8 tính năng dashboard (F1--F8), phạm vi dữ liệu 2015--2018.}
+
+\section{Đặc trưng 5V của bài toán}
+\begin{table}[H]
+\centering
+\caption{Đặc trưng 5V trong bộ dữ liệu DataCo}
+\label{tab:5v}
+\begin{tabularx}{\linewidth}{lX}
+\toprule
+\textbf{V} & \textbf{Biểu hiện} \\ \midrule
+Volume   & 180.519 bản ghi $\times$ 53 thuộc tính ($\approx$96 MB) \\
+Velocity & Đơn hàng ghi nhận theo phút; cần cảnh báo tại thời điểm tạo đơn \\
+Variety  & Tài chính, vận hành, địa lý GPS, khách hàng, sản phẩm \\
+Veracity & Lỗi mã Latin-1, 5 cặp cột trùng, cột rỗng, nguy cơ target leakage \\
+Value    & Giảm tỷ lệ trễ 54,83\% và thất thoát $-$3,88M USD \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Cấu trúc báo cáo}
+\todo{Tóm tắt nội dung từng chương.}

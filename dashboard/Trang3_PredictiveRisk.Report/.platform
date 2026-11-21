@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Trang3_PredictiveRisk"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "27e07daa-1672-590d-9358-eaa209341b40"
+  }
+}

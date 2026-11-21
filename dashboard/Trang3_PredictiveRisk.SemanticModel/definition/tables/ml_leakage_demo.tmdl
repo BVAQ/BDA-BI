@@ -1,0 +1,96 @@
+table ml_leakage_demo
+	lineageTag: d8c282f1-7741-5382-b5d6-40a144b04e4b
+
+	column scenario
+		dataType: string
+		lineageTag: bb6badee-a7bf-55a1-84b1-69e88c53ac64
+		summarizeBy: none
+		sourceColumn: scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column model
+		dataType: string
+		lineageTag: fd032f80-74a1-5cf4-850e-f32d438c3f52
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column accuracy
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 7cac2f03-38fd-52de-999a-514ef6ed42a3
+		summarizeBy: none
+		sourceColumn: accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+	column precision
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 2096ebf9-d373-5cba-8bda-53706b7e0d40
+		summarizeBy: none
+		sourceColumn: precision
+
+		annotation SummarizationSetBy = Automatic
+
+	column recall
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 032d7cf9-dc97-5b01-a115-1e5a4cb69b3a
+		summarizeBy: none
+		sourceColumn: recall
+
+		annotation SummarizationSetBy = Automatic
+
+	column f1
+		dataType: double
+		formatString: 0.0%
+		lineageTag: bdf3916b-8b0b-5066-971f-f6af29b44093
+		summarizeBy: none
+		sourceColumn: f1
+
+		annotation SummarizationSetBy = Automatic
+
+	column roc_auc
+		dataType: double
+		lineageTag: 3f480ace-fb7d-5b1a-8424-2baa17cd9135
+		summarizeBy: none
+		sourceColumn: roc_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	column pr_auc
+		dataType: double
+		lineageTag: c2bf9f77-8be4-56df-a12a-86f06912c9da
+		summarizeBy: none
+		sourceColumn: pr_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	column log_loss
+		dataType: double
+		lineageTag: 34961211-412f-562f-b083-2215d9f9cb0a
+		summarizeBy: none
+		sourceColumn: log_loss
+
+		annotation SummarizationSetBy = Automatic
+
+	column brier
+		dataType: double
+		lineageTag: 56618511-ecf2-5047-963e-6458a5a6b856
+		summarizeBy: none
+		sourceColumn: brier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_leakage_demo = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_leakage_demo.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

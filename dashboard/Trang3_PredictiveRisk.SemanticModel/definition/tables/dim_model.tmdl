@@ -1,0 +1,48 @@
+table dim_model
+	lineageTag: 3e66f15c-fc6c-5ef7-be2b-43797f0e61fd
+
+	column model
+		dataType: string
+		lineageTag: 55dabd16-5e4a-5eda-a3cd-fed316ad5db3
+		summarizeBy: none
+		sourceColumn: model
+		sortByColumn: model_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column model_type
+		dataType: string
+		lineageTag: ae5d76d7-2f24-56ec-addf-e69789531384
+		summarizeBy: none
+		sourceColumn: model_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_best
+		dataType: int64
+		lineageTag: 447338e9-b325-5301-883e-f2e61d979562
+		summarizeBy: none
+		sourceColumn: is_best
+
+		annotation SummarizationSetBy = Automatic
+
+	column model_order
+		dataType: int64
+		isHidden
+		lineageTag: 37cc088e-c976-52ed-aa08-41e537ff1337
+		summarizeBy: none
+		sourceColumn: model_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_model = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_model_comparison.parquet")),
+				    Selected = Table.SelectColumns(Source, {"model", "model_type", "is_best"}),
+				    Ordered = Table.AddIndexColumn(Selected, "model_order", 1, 1, Int64.Type)
+				in
+				    Ordered
+
+	annotation PBI_ResultType = Table

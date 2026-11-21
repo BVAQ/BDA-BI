@@ -1,0 +1,52 @@
+table ml_feature_importance
+	lineageTag: 3be93207-9aea-5f4a-9ea6-405375cb6f12
+
+	column model
+		dataType: string
+		lineageTag: d05afcbb-da58-558a-a934-744b40a73454
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column feature
+		dataType: string
+		lineageTag: 7113eb09-91d4-5f37-bd37-d7e486f1a3e6
+		summarizeBy: none
+		sourceColumn: feature
+
+		annotation SummarizationSetBy = Automatic
+
+	column importance_auc_drop
+		dataType: double
+		lineageTag: fb4f776b-a484-504f-bdb8-2ba73dfeb9bd
+		summarizeBy: none
+		sourceColumn: importance_auc_drop
+
+		annotation SummarizationSetBy = Automatic
+
+	column importance_std
+		dataType: double
+		lineageTag: 9ae4f005-0dbb-59b8-ac85-4cf7d4e2bd78
+		summarizeBy: none
+		sourceColumn: importance_std
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank
+		dataType: int64
+		lineageTag: ae17035d-0276-5a26-847e-87dcb77277de
+		summarizeBy: none
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_feature_importance = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_feature_importance.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

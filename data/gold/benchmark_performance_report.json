@@ -1,0 +1,21 @@
+{
+    "dataset_rows": 180519,
+    "benchmark_1_read_io": {
+        "raw_csv_read_ms": 1727.71,
+        "parquet_read_ms": 56.04,
+        "speedup": 30.83
+    },
+    "benchmark_2_olap_queries": {
+        "query_A_kpi_overview_ms": 61.89,
+        "query_B_monthly_trend_ms": 34.27,
+        "query_C_profit_erosion_ms": 47.95,
+        "avg_query_ms": 48.04
+    },
+    "benchmark_3_storage": {
+        "raw_csv_mb": 91.47,
+        "gold_parquet_mb": 6.39,
+        "compression_ratio": "14.31x",
+        "storage_saved_pct": "93.0%"
+    },
+    "conclusion": "Đọc Parquet nhanh hơn CSV 30.83x. Lưu trữ Columnar Parquet (Star Schema) tiết kiệm 93.0% dung lượng so với Raw CSV."
+}

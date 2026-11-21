@@ -1,0 +1,210 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "a9e1c5eb817d50da86ab",
+  "position": {
+    "x": 424,
+    "y": 508,
+    "z": 18000,
+    "height": 124,
+    "width": 420,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_threshold_metrics"
+                    }
+                  },
+                  "Property": "threshold"
+                }
+              },
+              "queryRef": "ml_threshold_metrics.threshold",
+              "nativeQueryRef": "threshold"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_threshold_metrics"
+                        }
+                      },
+                      "Property": "precision"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(ml_threshold_metrics.precision)",
+              "nativeQueryRef": "Max of precision",
+              "displayName": "Precision"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_threshold_metrics"
+                        }
+                      },
+                      "Property": "recall"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(ml_threshold_metrics.recall)",
+              "nativeQueryRef": "Max of recall",
+              "displayName": "Recall"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_threshold_metrics"
+                        }
+                      },
+                      "Property": "f1"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(ml_threshold_metrics.f1)",
+              "nativeQueryRef": "Max of f1",
+              "displayName": "F1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ml_threshold_metrics"
+                  }
+                },
+                "Property": "threshold"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Precision / Recall trade-off by threshold'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

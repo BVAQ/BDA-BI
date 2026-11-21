@@ -1,0 +1,111 @@
+table ml_whatif_grid
+	lineageTag: d17f9714-6915-50d2-91d7-8501c728cdcf
+
+	column shipping_mode
+		dataType: string
+		lineageTag: 9737a4fa-fc67-5dc2-ba24-859b5a7dcdac
+		summarizeBy: none
+		sourceColumn: shipping_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_hour
+		dataType: int64
+		lineageTag: d34f0447-2820-5a1c-83be-24be249a4f98
+		summarizeBy: none
+		sourceColumn: order_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: f9c3a544-7ffd-5297-8de4-7ddbe6ec80a0
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_region
+		dataType: string
+		lineageTag: 090d41df-7310-5695-8969-47b5735deabb
+		summarizeBy: none
+		sourceColumn: order_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: b3ddbeff-9f8a-5397-a533-f64a2e883e12
+		summarizeBy: none
+		sourceColumn: discount_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item_quantity
+		dataType: int64
+		lineageTag: 609d893e-1e75-5b43-b0f5-0afa450110d9
+		summarizeBy: none
+		sourceColumn: order_item_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_sales
+		dataType: double
+		lineageTag: b1478ed1-ebb2-5324-ae4f-a46f030988b4
+		summarizeBy: none
+		sourceColumn: net_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_sla_days
+		dataType: int64
+		lineageTag: bda228c3-133c-5e5e-9628-8284893e17db
+		summarizeBy: none
+		sourceColumn: current_sla_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column pred_prob_late
+		dataType: double
+		formatString: 0.0%
+		lineageTag: aee17ea9-b491-5ee6-9bfd-a263b10f1f00
+		summarizeBy: none
+		sourceColumn: pred_prob_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_band
+		dataType: string
+		lineageTag: 7d3c4a59-80a8-5324-91c7-510c64f55df9
+		summarizeBy: none
+		sourceColumn: risk_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommended_mode
+		dataType: string
+		lineageTag: a5f3cbdd-bc25-5c66-9211-048278d4cd93
+		summarizeBy: none
+		sourceColumn: recommended_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommended_mode_prob
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 2152fd9e-00f3-5514-ac01-1fe4ed2d49c6
+		summarizeBy: none
+		sourceColumn: recommended_mode_prob
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_whatif_grid = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_whatif_grid.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

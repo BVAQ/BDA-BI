@@ -1,0 +1,211 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "462bbc55c0475c0eb311",
+  "position": {
+    "x": 852,
+    "y": 432,
+    "z": 19000,
+    "height": 200,
+    "width": 412,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_auc_by_mode"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "ml_auc_by_mode.model",
+              "nativeQueryRef": "model",
+              "displayName": "Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_auc_by_mode"
+                    }
+                  },
+                  "Property": "segment"
+                }
+              },
+              "queryRef": "ml_auc_by_mode.segment",
+              "nativeQueryRef": "segment",
+              "displayName": "Shipping mode"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_auc_by_mode"
+                        }
+                      },
+                      "Property": "late_rate"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(ml_auc_by_mode.late_rate)",
+              "nativeQueryRef": "Max of late_rate",
+              "displayName": "Late rate"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_auc_by_mode"
+                        }
+                      },
+                      "Property": "mean_pred"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(ml_auc_by_mode.mean_pred)",
+              "nativeQueryRef": "Max of mean_pred",
+              "displayName": "Avg predicted"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ml_auc_by_mode"
+                        }
+                      },
+                      "Property": "within_auc"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(ml_auc_by_mode.within_auc)",
+              "nativeQueryRef": "Max of within_auc",
+              "displayName": "Within-group AUC"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Where Can the Model Discriminate?'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'First/Same Day: deterministic · Second/Standard: AUC ≈ 0.5'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

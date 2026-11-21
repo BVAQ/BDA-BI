@@ -1,0 +1,76 @@
+# Mã hóa categorical (OrdinalEncoder):
+#   shipping_mode: 0=First Class, 1=Same Day, 2=Second Class, 3=Standard Class
+#   payment_type: 0=CASH, 1=DEBIT, 2=PAYMENT, 3=TRANSFER
+#   market: 0=Africa, 1=Europe, 2=LATAM, 3=Pacific Asia, 4=USCA
+#   order_region: 0=Canada, 1=Caribbean, 2=Central Africa, 3=Central America, 4=Central Asia, 5=East Africa, 6=East of USA, 7=Eastern Asia, 8=Eastern Europe, 9=North Africa, 10=Northern Europe, 11=Oceania, 12=South America, 13=South Asia, 14=South of  USA , 15=Southeast Asia, 16=Southern Africa, 17=Southern Europe, 18=US Center , 19=West Africa, 20=West Asia, 21=West of USA , 22=Western Europe
+#   customer_segment: 0=Consumer, 1=Corporate, 2=Home Office
+#   department_name: 0=Apparel, 1=Fan Shop, 2=Fitness, 3=Footwear, 4=Golf, 5=Outdoors
+#   category_name: 0=Accessories, 1=As Seen on  TV!, 2=Baseball & Softball, 3=Boxing & MMA, 4=Camping & Hiking, 5=Cardio Equipment, 6=Cleats, 7=Electronics, 8=Fishing, 9=Fitness Accessories, 10=Girls' Apparel, 11=Golf Apparel, 12=Golf Bags & Carts, 13=Golf Balls, 14=Golf Gloves, 15=Golf Shoes, 16=Hockey, 17=Hunting & Shooting, 18=Indoor/Outdoor Games, 19=Kids' Golf Clubs, 20=Lacrosse, 21=Men's Footwear, 22=Men's Golf Clubs, 23=Shop By Sport, 24=Soccer, 25=Strength Training, 26=Tennis & Racquet, 27=Trade-In, 28=Water Sports, 29=Women's Apparel, 30=Women's Golf Clubs
+
+|--- shipping_mode <= 2.50
+|   |--- shipping_mode <= 0.50
+|   |   |--- class: 1
+|   |--- shipping_mode >  0.50
+|   |   |--- shipping_mode <= 1.50
+|   |   |   |--- order_hour <= 11.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- order_hour >  11.50
+|   |   |   |   |--- class: 1
+|   |   |--- shipping_mode >  1.50
+|   |   |   |--- order_dayofweek <= 3.50
+|   |   |   |   |--- order_hour <= 18.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- order_hour >  18.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- order_dayofweek >  3.50
+|   |   |   |   |--- items_in_order <= 4.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- items_in_order >  4.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|--- shipping_mode >  2.50
+|   |--- order_region <= 1.50
+|   |   |--- order_dayofweek <= 4.50
+|   |   |   |--- order_hour <= 1.50
+|   |   |   |   |--- items_in_order <= 4.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- items_in_order >  4.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- order_hour >  1.50
+|   |   |   |   |--- order_month <= 5.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- order_month >  5.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |--- order_dayofweek >  4.50
+|   |   |   |--- order_month <= 3.50
+|   |   |   |   |--- order_hour <= 20.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- order_hour >  20.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- order_month >  3.50
+|   |   |   |   |--- discount_rate <= 0.01
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- discount_rate >  0.01
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |--- order_region >  1.50
+|   |   |--- order_dayofweek <= 1.50
+|   |   |   |--- order_month <= 2.50
+|   |   |   |   |--- market <= 0.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- market >  0.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- order_month >  2.50
+|   |   |   |   |--- net_sales <= 60.01
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- net_sales >  60.01
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |--- order_dayofweek >  1.50
+|   |   |   |--- payment_type <= 1.50
+|   |   |   |   |--- order_hour <= 19.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- order_hour >  19.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- payment_type >  1.50
+|   |   |   |   |--- market <= 2.50
+|   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |--- market >  2.50
+|   |   |   |   |   |--- truncated branch of depth 2

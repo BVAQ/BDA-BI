@@ -1,0 +1,44 @@
+table ml_roc_curve
+	lineageTag: 9f9121dd-85a4-57a1-b263-5c775403e3e8
+
+	column model
+		dataType: string
+		lineageTag: 8c5cab31-1471-5d4f-8ad5-0f0217885bde
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column fpr
+		dataType: double
+		lineageTag: 0280641c-2585-575e-b376-68f345137717
+		summarizeBy: none
+		sourceColumn: fpr
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpr
+		dataType: double
+		lineageTag: 1c78e014-5165-5468-9176-fee7345c55a2
+		summarizeBy: none
+		sourceColumn: tpr
+
+		annotation SummarizationSetBy = Automatic
+
+	column threshold
+		dataType: double
+		lineageTag: 25398967-2368-568a-99e9-7ef1960e8452
+		summarizeBy: none
+		sourceColumn: threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_roc_curve = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_roc_curve.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

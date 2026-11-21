@@ -1,0 +1,169 @@
+table ml_model_comparison
+	lineageTag: 0bbecb1b-c3f9-55f6-9d4b-6a51166a2356
+
+	column model
+		dataType: string
+		lineageTag: 7399a7bd-6b64-5d31-9ac5-c460c80fa2f7
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column model_type
+		dataType: string
+		lineageTag: 602a3506-6e3e-54ac-a384-daa0f05ec74c
+		summarizeBy: none
+		sourceColumn: model_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column accuracy
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 76a084ac-3d76-578f-8455-42d3aa50b92f
+		summarizeBy: none
+		sourceColumn: accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+	column precision
+		dataType: double
+		formatString: 0.0%
+		lineageTag: a9bf219d-dce2-50d8-928f-c44e4f1bcae4
+		summarizeBy: none
+		sourceColumn: precision
+
+		annotation SummarizationSetBy = Automatic
+
+	column recall
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 4a103342-0637-52a1-a920-2d123bb3674d
+		summarizeBy: none
+		sourceColumn: recall
+
+		annotation SummarizationSetBy = Automatic
+
+	column f1
+		dataType: double
+		formatString: 0.0%
+		lineageTag: d13fe6ce-3f41-585a-82e5-46a52073c7c9
+		summarizeBy: none
+		sourceColumn: f1
+
+		annotation SummarizationSetBy = Automatic
+
+	column roc_auc
+		dataType: double
+		lineageTag: 08cf2b68-8684-53a3-bf0d-30f5cde523fc
+		summarizeBy: none
+		sourceColumn: roc_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	column pr_auc
+		dataType: double
+		lineageTag: 92fa2b92-1a64-5d6a-bae9-d39d4b0bb45d
+		summarizeBy: none
+		sourceColumn: pr_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	column log_loss
+		dataType: double
+		lineageTag: b544f8e6-8f5e-5dcd-8cf3-1910d4543883
+		summarizeBy: none
+		sourceColumn: log_loss
+
+		annotation SummarizationSetBy = Automatic
+
+	column brier
+		dataType: double
+		lineageTag: e21b9c3e-2509-5e08-b876-ce1debacb899
+		summarizeBy: none
+		sourceColumn: brier
+
+		annotation SummarizationSetBy = Automatic
+
+	column roc_auc_ci_low
+		dataType: double
+		lineageTag: 38f02c73-fdf3-52b2-a248-01b368f6396d
+		summarizeBy: none
+		sourceColumn: roc_auc_ci_low
+
+		annotation SummarizationSetBy = Automatic
+
+	column roc_auc_ci_high
+		dataType: double
+		lineageTag: 2d650759-36de-5943-9d15-d063c64d9940
+		summarizeBy: none
+		sourceColumn: roc_auc_ci_high
+
+		annotation SummarizationSetBy = Automatic
+
+	column cv_roc_auc_mean
+		dataType: double
+		lineageTag: 39048b0e-c244-516d-89f8-5a2e3444d1cf
+		summarizeBy: none
+		sourceColumn: cv_roc_auc_mean
+
+		annotation SummarizationSetBy = Automatic
+
+	column cv_roc_auc_std
+		dataType: double
+		lineageTag: 6ae4b4c3-60fc-5215-a2be-6dff5452f149
+		summarizeBy: none
+		sourceColumn: cv_roc_auc_std
+
+		annotation SummarizationSetBy = Automatic
+
+	column cv_brier_mean
+		dataType: double
+		lineageTag: b3e84f3c-65d2-5635-a02c-4a1348ec7e38
+		summarizeBy: none
+		sourceColumn: cv_brier_mean
+
+		annotation SummarizationSetBy = Automatic
+
+	column fit_seconds
+		dataType: double
+		lineageTag: 9cb1269d-9c07-5373-b1ed-e2d9538438a5
+		summarizeBy: none
+		sourceColumn: fit_seconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_best
+		dataType: int64
+		lineageTag: a6c4fa65-2c74-57ad-8565-d6621982a85d
+		summarizeBy: none
+		sourceColumn: is_best
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_of_ceiling_cv_auc
+		dataType: double
+		formatString: 0.0%
+		lineageTag: a3c6d155-b916-5d75-bee6-093b9f8932e0
+		summarizeBy: none
+		sourceColumn: pct_of_ceiling_cv_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	column gap_to_ceiling_test_auc
+		dataType: double
+		lineageTag: 5d995a28-78ac-51d5-a06b-313c9537de60
+		summarizeBy: none
+		sourceColumn: gap_to_ceiling_test_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_model_comparison = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_model_comparison.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

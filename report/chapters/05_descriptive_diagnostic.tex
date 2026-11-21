@@ -1,0 +1,28 @@
+% ============================== CHƯƠNG 5 ==============================
+\chapter{Phân tích mô tả và chẩn đoán (Trang 1--2)}
+\label{chap:descriptive}
+
+\section{Trang 1 --- Executive KPI \& Global Logistics Overview}
+\subsection{Feature 1: Dynamic KPI Scorecard}
+\todo{Net Sales \$33,05M, Net Profit \$3,97M, 180,5K shipments, OTD 45,17\%, Avg delay +0,57 ngày; DAX measures; ảnh dashboard.}
+\subsection{Feature 2: Interactive Global Geospatial Map}
+\todo{Bản đồ 164 quốc gia, drill-down Market $\rightarrow$ Region $\rightarrow$ Country $\rightarrow$ City.}
+
+\section{Trang 2 --- Multi-Dimensional OLAP \& SLA Diagnostic}
+\subsection{Feature 3: Root-Cause Decomposition Tree}
+\todo{Cây phân rã 98.977 đơn trễ theo Shipping Mode $\rightarrow$ Region $\rightarrow$ Department $\rightarrow$ Payment.}
+\subsection{Feature 4: SLA Paradox \& Lead-Time Variance Matrix}
+\begin{table}[H]
+\centering
+\caption{Tỷ lệ trễ theo phương thức vận chuyển (toàn bộ dữ liệu)}
+\begin{tabular}{lcrr}
+\toprule
+\textbf{Shipping mode} & \textbf{SLA (ngày)} & \textbf{Số dòng} & \textbf{Tỷ lệ trễ} \\ \midrule
+First Class    & 1 & 27.814  & 95,32\% \\
+Second Class   & 2 & 35.216  & 76,63\% \\
+Standard Class & 4 & 107.666 & 38,07\% \\
+Same Day       & 0 & 9.823   & 45,74\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+\todo{Phân tích ma trận Scheduled vs Real days; ảnh dashboard.}

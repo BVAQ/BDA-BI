@@ -1,0 +1,116 @@
+{
+    "generated_at": "2026-11-21T22:48:09",
+    "duration_seconds": 177.8,
+    "split": {
+        "strategy": "out-of-time",
+        "test_start": "2017-07-01",
+        "train_rows": 149478,
+        "test_rows": 23287,
+        "canceled_excluded": 7754,
+        "cv": "5-fold StratifiedGroupKFold by order_id"
+    },
+    "features": {
+        "categorical": [
+            "shipping_mode",
+            "payment_type",
+            "market",
+            "order_region",
+            "customer_segment",
+            "department_name",
+            "category_name"
+        ],
+        "numeric": [
+            "order_hour",
+            "order_dayofweek",
+            "order_month",
+            "is_weekend",
+            "is_peak_season",
+            "order_item_quantity",
+            "product_price",
+            "discount_rate",
+            "net_sales",
+            "items_in_order"
+        ],
+        "excluded_leakage": [
+            "days_shipping_real",
+            "delay_days",
+            "shipping_date_ts",
+            "delivery_status",
+            "shipping_ops_key",
+            "order_status",
+            "net_profit",
+            "is_loss_order",
+            "is_canceled_or_fraud"
+        ]
+    },
+    "best_model": {
+        "name": "DecisionTree",
+        "threshold": 0.5,
+        "accuracy": 0.7308,
+        "precision": 0.9003,
+        "recall": 0.5997,
+        "f1": 0.7199,
+        "roc_auc": 0.7876,
+        "pr_auc": 0.8531,
+        "log_loss": 0.4939,
+        "brier": 0.1719,
+        "roc_auc_ci_low": 0.782,
+        "roc_auc_ci_high": 0.7923,
+        "cv_roc_auc_mean": 0.7743,
+        "pct_of_ceiling_cv_auc": 1.0025
+    },
+    "theoretical_ceiling": {
+        "test": {
+            "accuracy": 0.7308,
+            "precision": 0.9003,
+            "recall": 0.5997,
+            "f1": 0.7199,
+            "roc_auc": 0.7808,
+            "pr_auc": 0.8082,
+            "log_loss": 0.4935,
+            "brier": 0.1717
+        },
+        "train": {
+            "accuracy": 0.7219,
+            "precision": 0.8938,
+            "recall": 0.5833,
+            "f1": 0.7059,
+            "roc_auc": 0.7736,
+            "pr_auc": 0.8,
+            "log_loss": 0.5006,
+            "brier": 0.175
+        }
+    },
+    "leakage_demo": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "roc_auc": 1.0,
+        "pr_auc": 1.0,
+        "log_loss": 0.0312,
+        "brier": 0.0017
+    },
+    "top_features": [
+        {
+            "feature": "shipping_mode",
+            "importance_auc_drop": 0.2862
+        },
+        {
+            "feature": "order_hour",
+            "importance_auc_drop": 0.0551
+        },
+        {
+            "feature": "payment_type",
+            "importance_auc_drop": 0.0041
+        },
+        {
+            "feature": "items_in_order",
+            "importance_auc_drop": 0.002
+        },
+        {
+            "feature": "net_sales",
+            "importance_auc_drop": 0.0011
+        }
+    ]
+}

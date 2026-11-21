@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "d83db0e0634259e3bfbe",
+  "position": {
+    "x": 16,
+    "y": 640,
+    "z": 20000,
+    "height": 72,
+    "width": 1248,
+    "tabOrder": 20000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Insight: ",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#F2A33A",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "Lateness is driven by SLA design — First Class always ships in 2 days (SLA 1) → 100% late; Same Day orders placed after 12:00 → late. Region, department and discount have no effect. Tree models reach ~100% of the theoretical ceiling; Logistic Regression lags because it cannot learn the mode × hour interaction.",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#E9EEF4"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#132744'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

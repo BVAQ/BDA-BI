@@ -1,0 +1,32 @@
+% ============================== LỜI CẢM ƠN / TÓM TẮT / PHÂN CÔNG ==============================
+\chapter*{Lời cảm ơn}
+\addcontentsline{toc}{chapter}{Lời cảm ơn}
+\todo{Viết lời cảm ơn giảng viên hướng dẫn.}
+
+\chapter*{Tóm tắt}
+\addcontentsline{toc}{chapter}{Tóm tắt}
+Báo cáo trình bày việc xây dựng một hệ thống Business Intelligence và Big Data Analytics
+cho bài toán vận tải chuỗi cung ứng toàn cầu trên bộ dữ liệu DataCo Smart Supply Chain
+(180.519 dòng vận đơn $\times$ 53 thuộc tính, 2015--2018). Hệ thống gồm pipeline ETL theo
+kiến trúc Medallion (Bronze $\rightarrow$ Silver $\rightarrow$ Gold), mô hình Kimball Star Schema
+trên Google BigQuery, xử lý phân tán bằng PySpark, mô hình học máy dự báo rủi ro trễ hạn
+trước khi giao hàng và bốn trang dashboard Power BI với tám tính năng nghiệp vụ.
+\todo{Bổ sung 3--4 câu kết quả chính: OTD 45,17\%, mô hình đạt 100\% trần lý thuyết, đề xuất tái cấu trúc SLA nâng OTD lên $\approx$80\%.}
+
+\noindent\textbf{Từ khoá:} Big Data, Business Intelligence, Medallion Architecture, Star Schema,
+BigQuery, PySpark, Machine Learning, Power BI, Supply Chain.
+
+\chapter*{Bảng phân công công việc}
+\addcontentsline{toc}{chapter}{Bảng phân công công việc}
+\begin{table}[H]
+\centering
+\caption{Phân công nhiệm vụ và mức độ đóng góp}
+\begin{tabularx}{\linewidth}{|l|X|c|}
+\hline
+\textbf{Thành viên} & \textbf{Nhiệm vụ} & \textbf{Đóng góp} \\ \hline
+Quốc Khánh & Pipeline ETL (Bronze/Silver/Gold), BigQuery, Semantic Views, Benchmark; Dashboard Trang 1 (F1, F2) & \todo{\%} \\ \hline
+Vinh Khánh & Phân tích OLAP đa chiều, chẩn đoán SLA; Dashboard Trang 2 (F3, F4) & \todo{\%} \\ \hline
+Quân & Mô hình dự báo trễ hạn pre-shipment, What-If Simulator; Dashboard Trang 3 (F5, F6) & \todo{\%} \\ \hline
+Vương & Phân tích lợi nhuận, gian lận, tái cấu trúc SLA; Dashboard Trang 4 (F7, F8) & \todo{\%} \\ \hline
+\end{tabularx}
+\end{table}

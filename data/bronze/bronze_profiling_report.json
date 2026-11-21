@@ -1,0 +1,15 @@
+{
+    "source_file": "DataCoSupplyChainDataset.csv",
+    "total_rows": 180519,
+    "total_columns": 53,
+    "null_columns": {
+        "Customer Lname": 8,
+        "Customer Zipcode": 3,
+        "Order Zipcode": 155679,
+        "Product Description": 180519
+    },
+    "unique_orders": 65752,
+    "unique_customers": 20652,
+    "unique_products": 118,
+    "extraction_duration_seconds": 1.58
+}

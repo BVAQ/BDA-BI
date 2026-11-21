@@ -1,0 +1,5 @@
+expression DataFolder = "D:\HK261\BDA\Assignment\btl\data\ml\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: dfb99c7a-4cf2-5825-b703-45492e0e0834
+
+	annotation PBI_ResultType = Text
+

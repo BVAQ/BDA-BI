@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "8cb25108eae65fac8ec9",
+  "displayName": "3.3 What-If Simulator (F6)",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "5f5f865efb075898b63c",
+      "target": "2c194c70bda5541eb836",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5f5f865efb075898b63c",
+      "target": "5859e8e5accd539f8b5e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6182aab8bbc25be69304",
+      "target": "5859e8e5accd539f8b5e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6d680a57eda2527da1d6",
+      "target": "7904cf784d7353c5bc0f",
+      "type": "NoFilter"
+    }
+  ]
+}

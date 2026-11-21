@@ -1,0 +1,62 @@
+table ml_auc_by_mode
+	lineageTag: d690dfa0-86ac-5aa2-8255-8ddb4b878454
+
+	column model
+		dataType: string
+		lineageTag: d69423a2-6da3-536d-b36f-cbadf1925f2d
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 0fe11773-54c4-595b-9ebb-aa80130e28d5
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows
+		dataType: int64
+		lineageTag: 214aa5c1-bf67-58ba-bea9-618e6957c727
+		summarizeBy: none
+		sourceColumn: rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: e974f000-0ad5-5029-8272-94a80d2d19e6
+		summarizeBy: none
+		sourceColumn: late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_pred
+		dataType: double
+		formatString: 0.0%
+		lineageTag: c0ded13e-1a17-51d0-baaa-d74c187012d7
+		summarizeBy: none
+		sourceColumn: mean_pred
+
+		annotation SummarizationSetBy = Automatic
+
+	column within_auc
+		dataType: double
+		lineageTag: 0e004142-6695-50c9-8667-a9259f1176fa
+		summarizeBy: none
+		sourceColumn: within_auc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_auc_by_mode = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_auc_by_mode.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

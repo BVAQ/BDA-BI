@@ -1,0 +1,63 @@
+table ml_segment_accuracy
+	lineageTag: aa3e471f-8ce4-56bd-8954-96935b446256
+
+	column shipping_mode
+		dataType: string
+		lineageTag: 4c21eff3-dea4-5749-a23b-f8b476b34c3e
+		summarizeBy: none
+		sourceColumn: shipping_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 31bef1a3-b3d1-5f89-b000-742c8c06ea50
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipments
+		dataType: int64
+		lineageTag: e90920f7-9a99-5d99-94a8-b5204e3d12e2
+		summarizeBy: none
+		sourceColumn: shipments
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 496396c2-2f52-560e-8392-69b52576904b
+		summarizeBy: none
+		sourceColumn: actual_late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column predicted_late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 20389d09-dab9-5ca8-82f6-f6ce9c5586b4
+		summarizeBy: none
+		sourceColumn: predicted_late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column accuracy
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 526ff7e7-e876-5da4-8b1b-50bb90865e02
+		summarizeBy: none
+		sourceColumn: accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_segment_accuracy = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_segment_accuracy.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,37 @@
+% ============================== CHƯƠNG 4 ==============================
+\chapter{Kiến trúc lưu trữ và xử lý}
+\label{chap:architecture}
+
+\section{Kiến trúc tổng thể}
+\todo{Sơ đồ pipeline: CSV $\rightarrow$ Bronze $\rightarrow$ Silver $\rightarrow$ Gold $\rightarrow$ BigQuery $\rightarrow$ Semantic Views $\rightarrow$ Power BI (đặt hình vào \texttt{figures/architecture.png}).}
+
+\section{Pipeline ETL dạng module}
+\todo{Bảng 8 module \texttt{step01}--\texttt{step07}, input/output, nguyên lý Single Responsibility; orchestrator \texttt{run\_pipeline.py}.}
+
+\section{Xử lý phân tán với PySpark}
+\todo{SparkSession \texttt{local[*]}, AQE, broadcast join với bảng SLA, \texttt{coalesce(4)}.}
+
+\section{Mô hình Kimball Star Schema (Gold)}
+\begin{table}[H]
+\centering
+\caption{Các bảng trong Star Schema tầng Gold}
+\label{tab:star}
+\begin{tabular}{llr}
+\toprule
+\textbf{Bảng} & \textbf{Loại} & \textbf{Số dòng} \\ \midrule
+\texttt{fact\_order\_shipments} & Fact (grain: order item) & 180.519 \\
+\texttt{dim\_date}         & Role-playing dimension & 1.133 \\
+\texttt{dim\_customer}     & Dimension & 20.652 \\
+\texttt{dim\_product}      & Dimension & 118 \\
+\texttt{dim\_geography}    & Dimension & 3.772 \\
+\texttt{dim\_shipping\_ops} & Junk dimension & 64 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\todo{Hình ERD; giải thích Role-playing, Junk, Degenerate dimension.}
+
+\section{Cloud Data Warehouse: Google BigQuery}
+\todo{Partition theo tháng trên \texttt{order\_date\_ts}, cluster theo \texttt{shipping\_ops\_key, destination\_geo\_key, late\_delivery\_risk}; 4 semantic view cho 4 thành viên.}
+
+\section{So sánh với giải pháp thay thế}
+\todo{Bảng so sánh PySpark vs Pandas vs SSIS; BigQuery vs PostgreSQL vs Hive (xem \texttt{ETL\_DATABASE\_EXECUTION\_PLAN.md}).}

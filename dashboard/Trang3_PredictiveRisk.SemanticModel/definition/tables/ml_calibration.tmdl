@@ -1,0 +1,54 @@
+table ml_calibration
+	lineageTag: 08b2ba2e-e8dc-5bcf-99f7-54650a949424
+
+	column model
+		dataType: string
+		lineageTag: 65deb8ac-2b65-5402-b19b-b1c0224fa2d7
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column bin
+		dataType: string
+		lineageTag: 3fa150f2-aedf-519f-86a0-fba7da6cbc15
+		summarizeBy: none
+		sourceColumn: bin
+
+		annotation SummarizationSetBy = Automatic
+
+	column mean_predicted
+		dataType: double
+		formatString: 0.0%
+		lineageTag: ef250f26-9e6c-55ec-b9a2-d6a89d7a50d1
+		summarizeBy: none
+		sourceColumn: mean_predicted
+
+		annotation SummarizationSetBy = Automatic
+
+	column observed_late_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 75b8b0d3-4c3f-555d-a3fb-fae5356532e2
+		summarizeBy: none
+		sourceColumn: observed_late_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column n
+		dataType: int64
+		lineageTag: 2dfed232-4e8c-5077-968b-180a00838acd
+		summarizeBy: none
+		sourceColumn: n
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_calibration = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_calibration.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

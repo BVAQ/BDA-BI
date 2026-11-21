@@ -1,0 +1,23 @@
+% ============================== PHỤ LỤC ==============================
+\chapter{Hướng dẫn chạy mã nguồn}
+\begin{lstlisting}[language=bash]
+pip install -r requirements-ml.txt
+python run_pipeline.py            # ETL: 1 -> 2 -> 2c -> 3 -> 4 -> 5 -> 6
+python run_pipeline.py --step 7   # Mô hình dự báo
+python dashboard/build_pbip.py    # Sinh Power BI Project
+\end{lstlisting}
+
+\chapter{Một số measure DAX tiêu biểu}
+\begin{lstlisting}[language=DAX]
+What-If Recommendation =
+IF([What-If Is Complete],
+    VAR cur = SELECTEDVALUE(ml_whatif_grid[shipping_mode])
+    VAR rec = SELECTEDVALUE(ml_whatif_grid[recommended_mode])
+    VAR rp  = SELECTEDVALUE(ml_whatif_grid[recommended_mode_prob])
+    RETURN IF(rec = cur, "Already the lowest-risk option",
+              "Switch to " & rec & " - P(late) drops to " & FORMAT(rp, "0%")),
+    "Pick one value for every input")
+\end{lstlisting}
+
+\chapter{Báo cáo chất lượng dữ liệu}
+\todo{Trích bảng 43 kiểm tra từ \texttt{data\_quality\_report.json}.}

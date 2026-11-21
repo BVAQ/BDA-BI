@@ -1,0 +1,61 @@
+table ml_confusion_matrix
+	lineageTag: 843642fd-92d2-5956-9054-271d2ef3835d
+
+	column model
+		dataType: string
+		lineageTag: 81d2184b-20ee-5e86-b2d3-cab270b041c2
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual
+		dataType: string
+		lineageTag: eaf90450-613c-55f3-89e6-11386ae98b27
+		summarizeBy: none
+		sourceColumn: actual
+
+		annotation SummarizationSetBy = Automatic
+
+	column predicted
+		dataType: string
+		lineageTag: 8ef5396a-3495-5214-ba8e-471cc9d7c926
+		summarizeBy: none
+		sourceColumn: predicted
+
+		annotation SummarizationSetBy = Automatic
+
+	column cell
+		dataType: string
+		lineageTag: 5ee784ce-90cd-5656-8b64-536f38abb68d
+		summarizeBy: none
+		sourceColumn: cell
+
+		annotation SummarizationSetBy = Automatic
+
+	column count
+		dataType: int64
+		lineageTag: 2bf4767e-370f-5a22-b583-378c998a5a45
+		summarizeBy: none
+		sourceColumn: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_of_total
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 5abb2306-85f4-5cfa-a44b-31e9af8bb119
+		summarizeBy: none
+		sourceColumn: pct_of_total
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ml_confusion_matrix = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(DataFolder & "ml_confusion_matrix.parquet"))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

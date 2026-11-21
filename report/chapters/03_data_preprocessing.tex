@@ -1,0 +1,32 @@
+% ============================== CHƯƠNG 3 ==============================
+\chapter{Dữ liệu và tiền xử lý}
+\label{chap:data}
+
+\section{Mô tả bộ dữ liệu}
+\todo{Nguồn Kaggle DataCo~\cite{dataco2019}, 53 cột, nhóm thuộc tính; bảng thống kê mô tả.}
+
+\section{Khảo sát chất lượng dữ liệu (Bronze profiling)}
+\begin{table}[H]
+\centering
+\caption{Các vấn đề chất lượng dữ liệu và cách xử lý}
+\label{tab:dq-issues}
+\begin{tabularx}{\linewidth}{lXX}
+\toprule
+\textbf{\#} & \textbf{Vấn đề} & \textbf{Giải pháp} \\ \midrule
+1 & 6 địa danh lỗi font Latin-1 & Từ điển \texttt{CITY\_REPAIR\_MAP} \\
+2 & 5 cặp cột trùng lặp 100\% & Loại bỏ cột dư thừa \\
+3 & \texttt{Product Description} 100\% null, \texttt{Order Zipcode} 86,24\% null & Loại bỏ \\
+4 & 6 cột PII (email, mật khẩu, họ tên, địa chỉ, ảnh) & Loại bỏ trước khi lên Cloud \\
+5 & Ngày dạng chuỗi \texttt{M/D/YYYY H:MM} & Ép kiểu timestamp \\
+6 & Thiếu biến nghiệp vụ & Feature engineering 9 cột \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Làm sạch và làm giàu dữ liệu (Silver)}
+\todo{Mô tả các bước trong \texttt{etl/step02\_transform\_silver.py}; bảng 9 feature mới.}
+
+\section{Kiểm định chất lượng dữ liệu tự động}
+Quality gate gồm 43 kiểm tra (row count, schema, null, FK/PK, business rules, outlier, temporal):
+41 PASS, 0 FAIL, 2 WARN.
+\todo{Bảng kết quả từ \texttt{data/gold/data\_quality\_report.json}.}
